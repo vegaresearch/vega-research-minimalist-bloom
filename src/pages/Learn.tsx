@@ -51,23 +51,23 @@ const Learn = () => {
   // If a module is selected, show the dedicated module view
   if (selectedModule) {
     return (
-      <div className="pt-16 min-h-screen bg-white">
+      <div className="pt-16 min-h-screen bg-black text-white">
         {/* Module Header */}
-        <section className="py-12 bg-gray-50">
+        <section className="py-12 bg-gray-900">
           <div className="max-w-7xl mx-auto px-6">
             <button 
               onClick={handleBackToModules}
-              className="flex items-center text-gray-600 hover:text-black mb-6 transition-colors"
+              className="flex items-center text-gray-400 hover:text-white mb-6 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to All Modules
             </button>
             <div className="max-w-3xl">
               <h1 className="text-4xl font-light mb-4">{selectedModule.title}</h1>
-              <p className="text-xl text-gray-600 leading-relaxed mb-6">
+              <p className="text-xl text-gray-300 leading-relaxed mb-6">
                 {selectedModule.description}
               </p>
-              <div className="flex items-center gap-6 text-sm text-gray-500">
+              <div className="flex items-center gap-6 text-sm text-gray-400">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4" />
                   {selectedModule.duration}
@@ -84,7 +84,7 @@ const Learn = () => {
         {/* Video Player Section */}
         <section className="py-16">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="bg-black rounded-2xl overflow-hidden">
+            <div className="bg-gray-900 rounded-2xl overflow-hidden">
               <div className="aspect-video">
                 <iframe
                   src={`https://www.youtube.com/embed/videoseries?list=${selectedModule.playlistId}&autoplay=1`}
@@ -99,17 +99,17 @@ const Learn = () => {
         </section>
 
         {/* Module Info */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-gray-900">
           <div className="max-w-6xl mx-auto px-6">
             <div className="grid lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2">
                 <h2 className="text-2xl font-medium mb-4">About This Module</h2>
-                <p className="text-gray-600 leading-relaxed mb-6">
+                <p className="text-gray-300 leading-relaxed mb-6">
                   {selectedModule.description}
                 </p>
-                <div className="bg-white p-6 rounded-xl">
+                <div className="bg-black p-6 rounded-xl border border-gray-800">
                   <h3 className="font-medium mb-3">What You'll Learn</h3>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-300">
                     <li>• Fundamental concepts and principles</li>
                     <li>• Practical applications and examples</li>
                     <li>• Real-world scenarios and case studies</li>
@@ -118,19 +118,19 @@ const Learn = () => {
                 </div>
               </div>
               <div>
-                <div className="bg-white p-6 rounded-xl">
+                <div className="bg-black p-6 rounded-xl border border-gray-800">
                   <h3 className="font-medium mb-4">Module Details</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Duration</span>
+                      <span className="text-gray-300">Duration</span>
                       <span>{selectedModule.duration}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Lessons</span>
+                      <span className="text-gray-300">Lessons</span>
                       <span>{selectedModule.lessons}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Level</span>
+                      <span className="text-gray-300">Level</span>
                       <span>Beginner to Advanced</span>
                     </div>
                   </div>
@@ -144,13 +144,13 @@ const Learn = () => {
   }
 
   return (
-    <div className="pt-16 min-h-screen bg-white">
+    <div className="pt-16 min-h-screen bg-black text-white">
       {/* Header */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <h1 className="text-5xl font-light mb-6">Learn</h1>
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-gray-300 leading-relaxed">
               Comprehensive video modules designed to take you from beginner to advanced investor. 
               Each module builds upon the previous, creating a structured learning path.
             </p>
@@ -163,9 +163,9 @@ const Learn = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-8">
             {modules.map((module) => (
-              <div key={module.id} className="group border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">
+              <div key={module.id} className="group border border-gray-800 rounded-2xl overflow-hidden hover:shadow-lg hover:shadow-gray-900/20 transition-all duration-300">
                 {/* YouTube Embed */}
-                <div className="aspect-video bg-gray-100 relative overflow-hidden">
+                <div className="aspect-video bg-gray-900 relative overflow-hidden">
                   <iframe
                     src={`https://www.youtube.com/embed/videoseries?list=${module.playlistId}`}
                     title={module.title}
@@ -176,11 +176,11 @@ const Learn = () => {
                 </div>
                 
                 {/* Content */}
-                <div className="p-8">
+                <div className="p-8 bg-black">
                   <h3 className="text-2xl font-medium mb-4">{module.title}</h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{module.description}</p>
+                  <p className="text-gray-300 mb-6 leading-relaxed">{module.description}</p>
                   
-                  <div className="flex items-center gap-6 text-sm text-gray-500 mb-6">
+                  <div className="flex items-center gap-6 text-sm text-gray-400 mb-6">
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4" />
                       {module.duration}
@@ -193,7 +193,7 @@ const Learn = () => {
                   
                   <button 
                     onClick={() => handleStartModule(module)}
-                    className="inline-flex items-center px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors group"
+                    className="inline-flex items-center px-6 py-3 bg-white text-black rounded-full hover:bg-gray-200 transition-colors group"
                   >
                     Start Module
                     <Play className="ml-2 w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -206,25 +206,25 @@ const Learn = () => {
       </section>
 
       {/* Learning Path */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light mb-4">Your Learning Journey</h2>
-            <p className="text-gray-600 text-lg">Follow our recommended path for optimal results</p>
+            <p className="text-gray-300 text-lg">Follow our recommended path for optimal results</p>
           </div>
           
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
               {modules.map((module, index) => (
                 <div key={module.id} className="flex items-center gap-8">
-                  <div className="flex-shrink-0 w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-medium">
+                  <div className="flex-shrink-0 w-12 h-12 bg-white text-black rounded-full flex items-center justify-center font-medium">
                     {index + 1}
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-medium mb-2">{module.title}</h3>
-                    <p className="text-gray-600">{module.description}</p>
+                    <p className="text-gray-300">{module.description}</p>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <div className="flex items-center gap-4 text-sm text-gray-400">
                     <span>{module.duration}</span>
                     <span>•</span>
                     <span>{module.lessons} lessons</span>
