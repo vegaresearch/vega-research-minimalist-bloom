@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, TrendingUp, Shield, Users } from 'lucide-react';
+import Footer from '../components/Footer';
 
 const Index = () => {
   return (
@@ -13,7 +14,10 @@ const Index = () => {
             <br />
             <span className="font-medium">Simplified.</span>
           </h1>
-          <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 mb-4 max-w-2xl mx-auto leading-relaxed">
+            Beyond the Ordinary
+          </p>
+          <p className="text-lg text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed">
             Discover comprehensive financial education and cutting-edge market research 
             that empowers intelligent investment decisions.
           </p>
@@ -103,6 +107,8 @@ const Index = () => {
           </Link>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };
