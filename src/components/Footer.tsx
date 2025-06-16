@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-black border-t border-gray-200">
+    <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo */}
@@ -16,30 +16,30 @@ const Footer = () => {
 
           {/* Education */}
           <div>
-            <h3 className="text-sm font-semibold mb-4 text-gray-600">EDUCATION</h3>
+            <h3 className="text-sm font-semibold mb-4 text-gray-300">EDUCATION</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/learn" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/learn" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Overview
                 </Link>
               </li>
               <li>
-                <Link to="/learn" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/learn" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Fundamentals
                 </Link>
               </li>
               <li>
-                <Link to="/learn" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/learn" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Advanced Trading
                 </Link>
               </li>
               <li>
-                <Link to="/learn" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/learn" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Market Analysis
                 </Link>
               </li>
               <li>
-                <Link to="/learn" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/learn" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Risk Management
                 </Link>
               </li>
@@ -48,30 +48,30 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h3 className="text-sm font-semibold mb-4 text-gray-600">RESOURCES</h3>
+            <h3 className="text-sm font-semibold mb-4 text-gray-300">RESOURCES</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/research" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/research" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Market Research
                 </Link>
               </li>
               <li>
-                <Link to="/research" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/research" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Daily Reports
                 </Link>
               </li>
               <li>
-                <Link to="/research" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/research" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Economic Calendar
                 </Link>
               </li>
               <li>
-                <Link to="/research" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/research" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Financial News
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/about" className="text-sm text-gray-400 hover:text-white transition-colors">
                   About Team
                 </Link>
               </li>
@@ -80,30 +80,30 @@ const Footer = () => {
 
           {/* Our Services */}
           <div>
-            <h3 className="text-sm font-semibold mb-4 text-gray-600">OUR SERVICES</h3>
+            <h3 className="text-sm font-semibold mb-4 text-gray-300">OUR SERVICES</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/learn" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/learn" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Financial Education
                 </Link>
               </li>
               <li>
-                <Link to="/research" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/research" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Market Intelligence
                 </Link>
               </li>
               <li>
-                <Link to="/research" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/research" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Investment Research
                 </Link>
               </li>
               <li>
-                <Link to="/legal" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/legal" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Compliance Guidance
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="text-sm text-gray-700 hover:text-black transition-colors">
+                <Link to="/about" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Consulting Services
                 </Link>
               </li>
@@ -111,36 +111,29 @@ const Footer = () => {
           </div>
         </div>
 
-        <Separator className="my-8 bg-gray-200" />
+        <Separator className="my-8 bg-gray-800" />
 
-        {/* Bottom section - similar to the image */}
-        <div className="space-y-4">
-          <div className="text-sm text-gray-600">
-            © 2025 The Vega Research Project
+        {/* Bottom section */}
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="text-sm text-gray-400">
+            © 2025 Vega Research. All rights reserved.
           </div>
-          <div className="text-sm text-gray-600">
-            Need to get in Contact? support@vegaresearch.in
-          </div>
-          <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-            <Link to="/legal" className="hover:text-black transition-colors">
-              Legal: Terms & Conditions
+          <div className="flex flex-wrap gap-6 text-sm">
+            <Link to="/legal" className="text-gray-400 hover:text-white transition-colors">
+              Privacy and Cookies
             </Link>
-            <span>|</span>
-            <Link to="/legal" className="hover:text-black transition-colors">
-              Disclaimer
+            <Link to="/legal" className="text-gray-400 hover:text-white transition-colors">
+              Your Privacy Choices
             </Link>
-          </div>
-          <div className="text-sm text-gray-600">
-            Need a Press Kit? Get our Public Brand Guide
-          </div>
-          <div className="text-sm text-gray-600">
-            PayPal: paypal.me/VegaResearch
-          </div>
-          <div className="text-sm text-gray-600">
-            Patreon: patreon.com/VegaResearch
-          </div>
-          <div className="text-sm text-gray-600">
-            Note: Vega Research LLC is not a 501(c)(3) non-profit, as such donations are not tax-exempt.
+            <Link to="/legal" className="text-gray-400 hover:text-white transition-colors">
+              Terms & Conditions
+            </Link>
+            <Link to="/legal" className="text-gray-400 hover:text-white transition-colors">
+              Security & Fraud Awareness
+            </Link>
+            <Link to="/legal" className="text-gray-400 hover:text-white transition-colors">
+              Regulatory Disclosures
+            </Link>
           </div>
         </div>
       </div>
