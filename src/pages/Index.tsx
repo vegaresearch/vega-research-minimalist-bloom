@@ -1,11 +1,8 @@
-
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, TrendingUp, Shield, Users } from 'lucide-react';
 import Footer from '../components/Footer';
-
 const Index = () => {
-  return (
-    <div className="pt-16">
+  return <div className="pt-16">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -22,17 +19,11 @@ const Index = () => {
             that empowers intelligent investment decisions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              to="/learn" 
-              className="inline-flex items-center px-8 py-4 bg-black text-white rounded-full hover:bg-gray-800 transition-all duration-300 group"
-            >
+            <Link to="/learn" className="inline-flex items-center px-8 py-4 bg-black text-white rounded-full hover:bg-gray-800 transition-all duration-300 group">
               Start Learning
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link 
-              to="/research" 
-              className="inline-flex items-center px-8 py-4 border border-gray-300 rounded-full hover:border-gray-400 transition-all duration-300"
-            >
+            <Link to="/research" className="inline-flex items-center px-8 py-4 border border-gray-300 rounded-full hover:border-gray-400 transition-all duration-300">
               Explore Research
             </Link>
           </div>
@@ -92,25 +83,9 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-black text-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-light mb-6">Ready to transform your financial future?</h2>
-          <p className="text-gray-300 text-lg mb-12 max-w-2xl mx-auto">
-            Join thousands of investors who trust Vega Research for their financial education and market insights.
-          </p>
-          <Link 
-            to="/learn" 
-            className="inline-flex items-center px-8 py-4 bg-white text-black rounded-full hover:bg-gray-100 transition-all duration-300 group"
-          >
-            Get Started Today
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-      </section>
+      
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
