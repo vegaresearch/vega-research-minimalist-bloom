@@ -1,6 +1,7 @@
+
 import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, TrendingUp, Shield, Users } from 'lucide-react';
-import Footer from '../components/Footer';
+
 const Index = () => {
   return <div className="pt-16">
       {/* Hero Section */}
@@ -81,11 +82,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      
-
-      <Footer />
     </div>;
 };
 export default Index;

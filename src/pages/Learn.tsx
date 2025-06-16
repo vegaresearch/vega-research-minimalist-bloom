@@ -9,7 +9,7 @@ const Learn = () => {
       description: "Master the basics of personal finance, budgeting, and investment principles",
       duration: "2.5 hours",
       lessons: 12,
-      playlistId: "PLrAXtmRdnEQeijiB-jFKnbBhTNjuTlzAD", // Example playlist ID
+      playlistId: "PL9ECA8AEB409B3E4F", // Updated with the specific playlist
     },
     {
       id: 2,
