@@ -1,7 +1,10 @@
 
 import { Shield, FileText, Scale, AlertTriangle } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const Legal = () => {
+  const { toast } = useToast();
+
   const legalSections = [
     {
       icon: FileText,
@@ -28,6 +31,20 @@ const Legal = () => {
       lastUpdated: "December 1, 2024"
     }
   ];
+
+  const handleDocumentClick = (title: string) => {
+    toast({
+      title: "Document Loading",
+      description: `${title} will be available in the full version.`,
+    });
+  };
+
+  const handleContactLegal = () => {
+    toast({
+      title: "Contact Request",
+      description: "Our legal team will be in touch within 24 hours.",
+    });
+  };
 
   return (
     <div className="pt-16 min-h-screen bg-white">
@@ -64,7 +81,10 @@ const Legal = () => {
                   
                   <p className="text-gray-600 mb-6 leading-relaxed">{section.description}</p>
                   
-                  <button className="inline-flex items-center text-sm font-medium hover:text-gray-600 transition-colors">
+                  <button 
+                    onClick={() => handleDocumentClick(section.title)}
+                    className="inline-flex items-center text-sm font-medium hover:text-gray-600 transition-colors"
+                  >
                     Read Document
                     <FileText className="ml-2 w-4 h-4" />
                   </button>
@@ -130,7 +150,10 @@ const Legal = () => {
             If you have questions about our legal terms, privacy practices, or compliance matters, 
             our legal team is here to help.
           </p>
-          <button className="inline-flex items-center px-8 py-4 border border-gray-300 rounded-full hover:border-gray-400 transition-all duration-300">
+          <button 
+            onClick={handleContactLegal}
+            className="inline-flex items-center px-8 py-4 border border-gray-300 rounded-full hover:border-gray-400 transition-all duration-300"
+          >
             Contact Legal Team
           </button>
         </div>

@@ -1,7 +1,13 @@
 
+import { useState } from 'react';
 import { Calendar, TrendingUp, ArrowUpRight } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const Research = () => {
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [email, setEmail] = useState('');
+  const { toast } = useToast();
+
   const articles = [
     {
       id: 1,
@@ -61,6 +67,28 @@ const Research = () => {
 
   const categories = ["All", "Monetary Policy", "Regulation", "Global Markets", "ESG", "Technology", "Real Estate"];
 
+  const filteredArticles = activeCategory === 'All' 
+    ? articles 
+    : articles.filter(article => article.category === activeCategory);
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      toast({
+        title: "Subscribed!",
+        description: "You've been subscribed to our research digest.",
+      });
+      setEmail('');
+    }
+  };
+
+  const handleArticleClick = (articleId: number) => {
+    toast({
+      title: "Article Coming Soon",
+      description: "This article will be available in the full version.",
+    });
+  };
+
   return (
     <div className="pt-16 min-h-screen bg-white">
       {/* Header */}
@@ -83,7 +111,12 @@ const Research = () => {
             {categories.map((category) => (
               <button
                 key={category}
-                className="px-4 py-2 text-sm border border-gray-200 rounded-full hover:bg-gray-50 transition-colors"
+                onClick={() => setActiveCategory(category)}
+                className={`px-4 py-2 text-sm border rounded-full transition-colors ${
+                  activeCategory === category
+                    ? 'bg-black text-white border-black'
+                    : 'border-gray-200 hover:bg-gray-50'
+                }`}
               >
                 {category}
               </button>
@@ -98,8 +131,12 @@ const Research = () => {
           <h2 className="text-3xl font-light mb-12">Featured Research</h2>
           
           <div className="grid lg:grid-cols-2 gap-8 mb-16">
-            {articles.filter(article => article.featured).map((article) => (
-              <article key={article.id} className="group border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">
+            {filteredArticles.filter(article => article.featured).map((article) => (
+              <article 
+                key={article.id} 
+                className="group border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer"
+                onClick={() => handleArticleClick(article.id)}
+              >
                 <div className="h-48 bg-gradient-to-br from-gray-50 to-gray-100 relative">
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 bg-black text-white text-xs rounded-full">
@@ -136,8 +173,12 @@ const Research = () => {
           <h2 className="text-3xl font-light mb-12">Latest Analysis</h2>
           
           <div className="space-y-6">
-            {articles.map((article) => (
-              <article key={article.id} className="group border-b border-gray-100 pb-8 last:border-b-0">
+            {filteredArticles.map((article) => (
+              <article 
+                key={article.id} 
+                className="group border-b border-gray-100 pb-8 last:border-b-0 cursor-pointer"
+                onClick={() => handleArticleClick(article.id)}
+              >
                 <div className="flex flex-col lg:flex-row lg:items-center gap-6">
                   <div className="flex-1">
                     <div className="flex items-center gap-4 mb-3">
@@ -175,16 +216,22 @@ const Research = () => {
           <p className="text-gray-300 text-lg mb-12 max-w-2xl mx-auto">
             Get our weekly research digest delivered to your inbox. No spam, just insights.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+          <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <input 
               type="email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email" 
               className="flex-1 px-4 py-3 rounded-full text-black outline-none"
+              required
             />
-            <button className="px-6 py-3 bg-white text-black rounded-full hover:bg-gray-100 transition-colors">
+            <button 
+              type="submit"
+              className="px-6 py-3 bg-white text-black rounded-full hover:bg-gray-100 transition-colors"
+            >
               Subscribe
             </button>
-          </div>
+          </form>
         </div>
       </section>
     </div>
