@@ -22,6 +22,19 @@ const ArticleManager = () => {
       date: "December 15, 2024",
       readTime: "8 min read",
       featured: true,
+      content: `The Federal Reserve's recent policy adjustments have sent ripples through financial markets, creating both opportunities and challenges for investors across various asset classes. As we analyze the implications of these monetary policy shifts, it becomes clear that understanding their nuanced effects is crucial for portfolio management in today's economic climate.
+
+## Key Policy Changes
+
+The Federal Open Market Committee (FOMC) has implemented several significant changes to monetary policy in recent months. The most notable include adjustments to the federal funds rate, modifications to quantitative easing programs, and updated forward guidance communications.
+
+## Market Response Analysis
+
+Equity markets have shown mixed reactions to these policy changes, with different sectors responding according to their sensitivity to interest rate fluctuations. Technology stocks, traditionally more vulnerable to rate increases due to their growth-oriented nature and higher valuations, have experienced increased volatility.
+
+## Investment Strategy Considerations
+
+For portfolio managers and individual investors, these policy changes necessitate a thorough review of asset allocation strategies. Traditional correlations between asset classes may be shifting, requiring more dynamic hedging approaches and risk management techniques.`
     },
     {
       id: 2,
@@ -31,6 +44,15 @@ const ArticleManager = () => {
       date: "December 12, 2024", 
       readTime: "6 min read",
       featured: false,
+      content: `The cryptocurrency landscape continues to evolve rapidly as regulatory frameworks take shape across global markets. Understanding these developments is essential for investors considering digital asset allocation within their portfolios.
+
+## Regulatory Landscape Overview
+
+Major economies are establishing clearer guidelines for cryptocurrency operations, trading, and taxation. These regulations aim to provide investor protection while fostering innovation in the digital asset space.
+
+## Impact on Investment Strategies
+
+New regulatory clarity is influencing how institutional investors approach cryptocurrency investments, with many now developing formal digital asset allocation strategies.`
     },
   ]);
 
@@ -42,6 +64,7 @@ const ArticleManager = () => {
     category: '',
     readTime: '',
     featured: false,
+    content: '',
   });
 
   const categories = ["Monetary Policy", "Regulation", "Global Markets", "ESG", "Technology", "Real Estate"];
@@ -77,6 +100,7 @@ const ArticleManager = () => {
       category: article.category,
       readTime: article.readTime,
       featured: article.featured,
+      content: article.content || '',
     });
     setIsDialogOpen(true);
   };
@@ -87,7 +111,7 @@ const ArticleManager = () => {
   };
 
   const resetForm = () => {
-    setFormData({ title: '', excerpt: '', category: '', readTime: '', featured: false });
+    setFormData({ title: '', excerpt: '', category: '', readTime: '', featured: false, content: '' });
     setEditingArticle(null);
     setIsDialogOpen(false);
   };
@@ -103,7 +127,7 @@ const ArticleManager = () => {
               Add Article
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-2xl">
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>{editingArticle ? 'Edit Article' : 'Add New Article'}</DialogTitle>
               <DialogDescription>
@@ -153,6 +177,20 @@ const ArticleManager = () => {
                     required
                   />
                 </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="content">Article Content</Label>
+                <Textarea
+                  id="content"
+                  value={formData.content}
+                  onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                  placeholder="Write your article content here. You can use ## for headings."
+                  className="min-h-[300px]"
+                  required
+                />
+                <p className="text-sm text-gray-500">
+                  Tip: Use ## for section headings (e.g., ## Introduction)
+                </p>
               </div>
               <div className="flex items-center space-x-2">
                 <input
