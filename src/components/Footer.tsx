@@ -89,22 +89,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/research" className="text-sm text-gray-400 hover:text-white transition-colors">
-                  Market Intelligence
-                </Link>
-              </li>
-              <li>
-                <Link to="/research" className="text-sm text-gray-400 hover:text-white transition-colors">
                   Investment Research
-                </Link>
-              </li>
-              <li>
-                <Link to="/legal" className="text-sm text-gray-400 hover:text-white transition-colors">
-                  Compliance Guidance
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-sm text-gray-400 hover:text-white transition-colors">
-                  Consulting Services
                 </Link>
               </li>
             </ul>

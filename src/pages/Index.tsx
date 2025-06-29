@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { ArrowRight, BookOpen, TrendingUp, Shield, Users } from 'lucide-react';
+import { ArrowRight, BookOpen, TrendingUp } from 'lucide-react';
 
 const Index = () => {
   return <div className="pt-16">
@@ -36,10 +36,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-light mb-4">Everything you need to succeed</h2>
-            <p className="text-gray-600 text-lg">Four essential pillars of financial excellence</p>
+            <p className="text-gray-600 text-lg">Two essential pillars of financial excellence</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="text-center group">
               <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gray-100 transition-colors">
                 <BookOpen className="w-8 h-8 text-gray-700" />
@@ -57,26 +57,6 @@ const Index = () => {
               <h3 className="text-xl font-medium mb-3">Research</h3>
               <p className="text-gray-600 leading-relaxed">
                 In-depth analysis of market trends and financial instruments that impact your portfolio
-              </p>
-            </div>
-            
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gray-100 transition-colors">
-                <Shield className="w-8 h-8 text-gray-700" />
-              </div>
-              <h3 className="text-xl font-medium mb-3">Legal</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Clear guidance on compliance, regulations, and legal considerations in finance
-              </p>
-            </div>
-            
-            <div className="text-center group">
-              <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gray-100 transition-colors">
-                <Users className="w-8 h-8 text-gray-700" />
-              </div>
-              <h3 className="text-xl font-medium mb-3">About</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Meet our team of financial experts dedicated to democratizing financial education
               </p>
             </div>
           </div>
