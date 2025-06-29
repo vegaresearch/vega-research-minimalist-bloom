@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Calendar, TrendingUp, ArrowUpRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Link } from 'react-router-dom';
 
 const Research = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -83,10 +84,13 @@ const Research = () => {
   };
 
   const handleArticleClick = (articleId: number) => {
-    toast({
-      title: "Article Coming Soon",
-      description: "This article will be available in the full version.",
-    });
+    // Only show toast for non-first articles
+    if (articleId !== 1) {
+      toast({
+        title: "Article Coming Soon",
+        description: "This article will be available in the full version.",
+      });
+    }
   };
 
   return (
@@ -132,39 +136,73 @@ const Research = () => {
           
           <div className="grid lg:grid-cols-2 gap-8 mb-16">
             {filteredArticles.filter(article => article.featured).map((article) => (
-              <article 
-                key={article.id} 
-                className="group border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer"
-                onClick={() => handleArticleClick(article.id)}
-              >
-                <div className="h-48 bg-gradient-to-br from-gray-50 to-gray-100 relative">
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-black text-white text-xs rounded-full">
-                      {article.category}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-4 right-4">
-                    <TrendingUp className="w-8 h-8 text-gray-400" />
-                  </div>
-                </div>
-                
-                <div className="p-8">
-                  <h3 className="text-xl font-medium mb-3 group-hover:text-gray-600 transition-colors">
-                    {article.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">{article.excerpt}</p>
-                  
-                  <div className="flex items-center justify-between text-sm text-gray-500">
-                    <div className="flex items-center gap-4">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        {article.date}
-                      </span>
-                      <span>{article.readTime}</span>
+              <article key={article.id} className="group border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">
+                {article.id === 1 ? (
+                  <Link to={`/article/${article.id}`}>
+                    <div className="h-48 bg-gradient-to-br from-gray-50 to-gray-100 relative">
+                      <div className="absolute top-4 left-4">
+                        <span className="px-3 py-1 bg-black text-white text-xs rounded-full">
+                          {article.category}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-4 right-4">
+                        <TrendingUp className="w-8 h-8 text-gray-400" />
+                      </div>
                     </div>
-                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    
+                    <div className="p-8">
+                      <h3 className="text-xl font-medium mb-3 group-hover:text-gray-600 transition-colors">
+                        {article.title}
+                      </h3>
+                      <p className="text-gray-600 mb-4 leading-relaxed">{article.excerpt}</p>
+                      
+                      <div className="flex items-center justify-between text-sm text-gray-500">
+                        <div className="flex items-center gap-4">
+                          <span className="flex items-center gap-1">
+                            <Calendar className="w-4 h-4" />
+                            {article.date}
+                          </span>
+                          <span>{article.readTime}</span>
+                        </div>
+                        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </div>
+                    </div>
+                  </Link>
+                ) : (
+                  <div 
+                    className="cursor-pointer"
+                    onClick={() => handleArticleClick(article.id)}
+                  >
+                    <div className="h-48 bg-gradient-to-br from-gray-50 to-gray-100 relative">
+                      <div className="absolute top-4 left-4">
+                        <span className="px-3 py-1 bg-black text-white text-xs rounded-full">
+                          {article.category}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-4 right-4">
+                        <TrendingUp className="w-8 h-8 text-gray-400" />
+                      </div>
+                    </div>
+                    
+                    <div className="p-8">
+                      <h3 className="text-xl font-medium mb-3 group-hover:text-gray-600 transition-colors">
+                        {article.title}
+                      </h3>
+                      <p className="text-gray-600 mb-4 leading-relaxed">{article.excerpt}</p>
+                      
+                      <div className="flex items-center justify-between text-sm text-gray-500">
+                        <div className="flex items-center gap-4">
+                          <span className="flex items-center gap-1">
+                            <Calendar className="w-4 h-4" />
+                            {article.date}
+                          </span>
+                          <span>{article.readTime}</span>
+                        </div>
+                        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
               </article>
             ))}
           </div>
@@ -174,35 +212,65 @@ const Research = () => {
           
           <div className="space-y-6">
             {filteredArticles.map((article) => (
-              <article 
-                key={article.id} 
-                className="group border-b border-gray-100 pb-8 last:border-b-0 cursor-pointer"
-                onClick={() => handleArticleClick(article.id)}
-              >
-                <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-4 mb-3">
-                      <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
-                        {article.category}
-                      </span>
-                      <span className="text-sm text-gray-500">{article.date}</span>
-                      <span className="text-sm text-gray-500">•</span>
-                      <span className="text-sm text-gray-500">{article.readTime}</span>
+              <article key={article.id} className="group border-b border-gray-100 pb-8 last:border-b-0">
+                {article.id === 1 ? (
+                  <Link to={`/article/${article.id}`} className="cursor-pointer">
+                    <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-4 mb-3">
+                          <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                            {article.category}
+                          </span>
+                          <span className="text-sm text-gray-500">{article.date}</span>
+                          <span className="text-sm text-gray-500">•</span>
+                          <span className="text-sm text-gray-500">{article.readTime}</span>
+                        </div>
+                        
+                        <h3 className="text-xl font-medium mb-3 group-hover:text-gray-600 transition-colors">
+                          {article.title}
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed">{article.excerpt}</p>
+                      </div>
+                      
+                      <div className="lg:flex-shrink-0">
+                        <button className="inline-flex items-center gap-2 text-sm font-medium group-hover:text-gray-600 transition-colors">
+                          Read Article
+                          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </button>
+                      </div>
                     </div>
-                    
-                    <h3 className="text-xl font-medium mb-3 group-hover:text-gray-600 transition-colors">
-                      {article.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">{article.excerpt}</p>
+                  </Link>
+                ) : (
+                  <div 
+                    className="cursor-pointer"
+                    onClick={() => handleArticleClick(article.id)}
+                  >
+                    <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-4 mb-3">
+                          <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                            {article.category}
+                          </span>
+                          <span className="text-sm text-gray-500">{article.date}</span>
+                          <span className="text-sm text-gray-500">•</span>
+                          <span className="text-sm text-gray-500">{article.readTime}</span>
+                        </div>
+                        
+                        <h3 className="text-xl font-medium mb-3 group-hover:text-gray-600 transition-colors">
+                          {article.title}
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed">{article.excerpt}</p>
+                      </div>
+                      
+                      <div className="lg:flex-shrink-0">
+                        <button className="inline-flex items-center gap-2 text-sm font-medium group-hover:text-gray-600 transition-colors">
+                          Read Article
+                          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  
-                  <div className="lg:flex-shrink-0">
-                    <button className="inline-flex items-center gap-2 text-sm font-medium group-hover:text-gray-600 transition-colors">
-                      Read Article
-                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </button>
-                  </div>
-                </div>
+                )}
               </article>
             ))}
           </div>
